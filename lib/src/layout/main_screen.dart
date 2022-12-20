@@ -1,12 +1,13 @@
 // ignore_for_file: avoid_print
 
 import 'package:ecommerce_app/src/layout/login_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+/* import 'package:firebase_auth/firebase_auth.dart'; */
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final GoogleSignInAccount? user;
+  const MainScreen({Key? key, this.user}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -16,13 +17,27 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+/*   final FirebaseAuth _auth = FirebaseAuth.instance; */
+  GoogleSignInAccount? _currentUser;
+
+  @override
+  void initState() {
+    super.initState();
+    _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
+      setState(() {
+        _currentUser = account;
+      });
+      /* if (_currentUser != null) {
+        _handleGetContact(_currentUser!);
+      } */
+    });
+  }
 
   Future<void> googleSignOut() async {
     // Sign out with firebase
-    await _auth.signOut();
+    /*  await _auth.signOut(); */
     // Sign out with google
-    await _googleSignIn.signOut();
+    _googleSignIn.disconnect();
   }
 
   @override
@@ -42,8 +57,26 @@ class MainScreenState extends State<MainScreen> {
               icon: const Icon(Icons.logout_rounded))
         ],
       ),
-      body: const Center(
-        child: Text("Hello User"),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          ListTile(
+            leading: GoogleUserCircleAvatar(
+              identity: widget.user!,
+            ),
+            title: Text(widget.user!.displayName ?? ''),
+            subtitle: Text(widget.user!.email),
+          ),
+          const Text('Signed in successfully.'),
+          ElevatedButton(
+            onPressed: googleSignOut,
+            child: const Text('SIGN OUT'),
+          ),
+          /*     ElevatedButton(
+            child: const Text('REFRESH'),
+            onPressed: () => _handleGetContact(user),
+          ), */
+        ],
       ),
     );
   }

@@ -2,7 +2,7 @@
 
 import 'package:ecommerce_app/src/layout/main_screen.dart';
 import 'package:ecommerce_app/src/utils/utils.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+/* import 'package:firebase_auth/firebase_auth.dart'; */
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -18,8 +18,21 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   final TextEditingController _phController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+/*   final FirebaseAuth _auth = FirebaseAuth.instance; */
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  GoogleSignInAccount? _currentUser;
+
+  @override
+  void initState() {
+    super.initState();
+    /*   _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
+      setState(() {
+        _currentUser = account;
+      });
+      if (_currentUser != null) {}
+    });
+    _googleSignIn.signInSilently(); */
+  }
 
   //--------------------- Login with Phone NUmber -----------------
   Widget logoSection() {
@@ -47,7 +60,7 @@ class LoginScreenState extends State<LoginScreen> {
 
   Widget phoneTextField() {
     return Container(
-        margin: const EdgeInsets.only(top: 120),
+        margin: const EdgeInsets.only(top: 120, left: 28, right: 28),
         child: TextFormField(
           controller: _phController,
           keyboardType: TextInputType.number,
@@ -126,6 +139,14 @@ class LoginScreenState extends State<LoginScreen> {
     final GoogleSignInAccount? _googleSignInAccount =
         await _googleSignIn.signIn();
     if (_googleSignInAccount != null) {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MainScreen(
+                    user: _googleSignInAccount,
+                  )));
+    }
+    /*  if (_googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
           await _googleSignInAccount.authentication;
       final AuthCredential authCredential = GoogleAuthProvider.credential(
@@ -142,7 +163,7 @@ class LoginScreenState extends State<LoginScreen> {
       } else {
         print("!!!!!Google Sign In Error");
       }
-    }
+    } */
   }
 
   Widget googleSection() {
