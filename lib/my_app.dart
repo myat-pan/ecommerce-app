@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/src/layout/login_screen.dart';
+import 'package:ecommerce_app/src/modules/login/views/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
