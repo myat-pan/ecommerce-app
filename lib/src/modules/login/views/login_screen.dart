@@ -4,6 +4,7 @@ import 'package:ecommerce_app/src/modules/home/views/main_screen.dart';
 import 'package:ecommerce_app/src/utils/utils.dart';
 /* import 'package:firebase_auth/firebase_auth.dart'; */
 import 'package:flutter/material.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -21,6 +22,8 @@ class LoginScreenState extends State<LoginScreen> {
 /*   final FirebaseAuth _auth = FirebaseAuth.instance; */
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _currentUser;
+  // Create an instance of FacebookLogin
+  final fb = FacebookLogin();
 
   @override
   void initState() {
@@ -190,9 +193,50 @@ class LoginScreenState extends State<LoginScreen> {
           color: Utils.primaryColor,
           size: 28,
         ),
-        onPressed: () {},
+        onPressed: () async {
+          final res = await fb.logIn(permissions: [
+            FacebookPermission.publicProfile,
+            FacebookPermission.email,
+          ]);
+          print(res);
+          switch (res.status) {
+            case FacebookLoginStatus.error:
+              print("Error");
+              // onLoginStatusChanged(false);
+              break;
+            case FacebookLoginStatus.cancel:
+              print("CancelledByUser");
+              //onLoginStatusChanged(false);
+              break;
+            case FacebookLoginStatus.success:
+              print("LoggedIn");
+              //  onLoginStatusChanged(true);
+              break;
+            case FacebookLoginStatus.success:
+              // TODO: Handle this case.
+              break;
+            case FacebookLoginStatus.cancel:
+              // TODO: Handle this case.
+              break;
+          }
+        },
       ),
     );
+  }
+
+  _updateLoginInfo() async {
+    final token = await fb.accessToken;
+    FacebookUserProfile? profile;
+    String? email;
+    String? imageUrl;
+
+    if (token != null) {
+      profile = await fb.getUserProfile();
+      if (token.permissions.contains(FacebookPermission.email.name)) {
+        email = await fb.getUserEmail();
+      }
+      imageUrl = await fb.getProfileImageUrl(width: 100);
+    }
   }
 
 //---------------------------------
