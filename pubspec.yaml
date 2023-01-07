@@ -40,6 +40,7 @@ dependencies:
     path: network_module
   login_module:
     path: login_module
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_lints: ^1.0.0

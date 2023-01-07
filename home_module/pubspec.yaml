@@ -8,8 +8,12 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  cached_network_image: ^3.2.0
   flutter:
     sdk: flutter
+  flutter_feather_icons: ^2.0.0
+  network_module:
+    path: ../network_module
 
 dev_dependencies:
   flutter_test:

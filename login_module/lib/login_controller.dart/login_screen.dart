@@ -4,7 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:home_module/Views/home_screen.dart';
 import 'package:main_module/main_screen.dart';
 import 'package:network_module/utils/utils.dart';
 
@@ -144,12 +146,13 @@ class LoginScreenState extends State<LoginScreen> {
     final GoogleSignInAccount? _googleSignInAccount =
         await _googleSignIn.signIn();
     if (_googleSignInAccount != null) {
-      Navigator.pushReplacement(
+      Get.offAll(HomeScreen());
+      /*  Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => MainScreen(
                     user: _googleSignInAccount,
-                  )));
+                  ))); */
     }
     /*  if (_googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
@@ -222,13 +225,14 @@ class LoginScreenState extends State<LoginScreen> {
               print("LoggedIn");
               profile = await fb.getUserProfile();
               fbImageUrl = await fb.getProfileImageUrl(width: 100);
-              Navigator.pushReplacement(
+              Get.offAll(HomeScreen());
+              /*  Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) => MainScreen(
                             profile: profile,
                             fbImageUrl: fbImageUrl,
-                          )));
+                          ))); */
               //  onLoginStatusChanged(true);
               break;
           }

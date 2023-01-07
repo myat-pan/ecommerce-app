@@ -19,6 +19,9 @@ dependencies:
     path: ../network_module
   main_module:
     path: ../main_module
+  home_module:
+    path: ../home_module
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
