@@ -1,4 +1,5 @@
-import 'package:ecommerce_app/src/modules/login/views/login_screen.dart';
+import 'package:login_module/login_controller.dart/login_screen.dart';
+import 'package:network_module/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Utils.mycolor,
       ),
       home: const LoginScreen(),
     );
