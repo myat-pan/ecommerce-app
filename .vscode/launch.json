@@ -1,0 +1,105 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ecommerce-app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ecommerce-app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ecommerce-app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "home_module",
+            "cwd": "home_module",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "home_module (profile mode)",
+            "cwd": "home_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "home_module (release mode)",
+            "cwd": "home_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "login_module",
+            "cwd": "login_module",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "login_module (profile mode)",
+            "cwd": "login_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "login_module (release mode)",
+            "cwd": "login_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "main_module",
+            "cwd": "main_module",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "main_module (profile mode)",
+            "cwd": "main_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "main_module (release mode)",
+            "cwd": "main_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "network_module",
+            "cwd": "network_module",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "network_module (profile mode)",
+            "cwd": "network_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "network_module (release mode)",
+            "cwd": "network_module",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
