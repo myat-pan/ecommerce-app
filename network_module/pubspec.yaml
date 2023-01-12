@@ -10,6 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_secure_storage: ^7.0.1
+  get: ^4.6.5
+  http: ^0.13.5
+  home_module:
+    path: ../home_module
 
 dev_dependencies:
   flutter_test:

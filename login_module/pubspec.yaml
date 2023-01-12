@@ -22,6 +22,7 @@ dependencies:
   home_module:
     path: ../home_module
   get: ^4.6.5
+  flutter_secure_storage: ^7.0.1
 
 dev_dependencies:
   flutter_test:
